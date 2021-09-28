@@ -20,6 +20,10 @@ function Player(){
     this.acc.y+=this.spd;
   }
 
+  this.move = function(multiplier){
+    this.acc.y+=this.spd*multiplier;
+  }
+
   this.stp = function(){
     this.acc.y = 0;
   }
@@ -27,6 +31,7 @@ function Player(){
   this.update = function(){
     this.acc.y = constrain(this.acc.y, -this.maxSpd, this.maxSpd);
     this.pos.add(this.acc);
+    this.acc.y *= 0.89;
     this.pos.y = constrain(this.pos.y, 0, height-this.h);
 
     //console.log(this.acc.y);
